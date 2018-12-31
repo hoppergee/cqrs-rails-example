@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2018_12_31_050919) do
 
   create_table "order_lines", force: :cascade do |t|
     t.string "order_uid"
-    t.string "product_id"
+    t.integer "product_id"
     t.string "product_name"
-    t.string "quantity"
+    t.integer "quantity"
   end
 
   create_table "orders", force: :cascade do |t|
