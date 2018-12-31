@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_31_050543) do
+ActiveRecord::Schema.define(version: 2018_12_31_050738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2018_12_31_050543) do
     t.index ["created_at"], name: "index_event_store_events_in_streams_on_created_at"
     t.index ["stream", "event_id"], name: "index_event_store_events_in_streams_on_stream_and_event_id", unique: true
     t.index ["stream", "position"], name: "index_event_store_events_in_streams_on_stream_and_position", unique: true
+  end
+
+  create_table "order_lines", force: :cascade do |t|
+    t.string "order_uid"
+    t.string "product_id"
+    t.string "product_name"
+    t.string "quantity"
   end
 
   create_table "orders", force: :cascade do |t|
