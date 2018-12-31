@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+['BigCorp Ltd', 'MegaTron Gmbh', 'Arkency'].each do |name|
+  Customer.create(name: name)
+end
+
+['Fearless Refactoring: Rails controllers',
+ 'Rail meets React.js',
+ 'Developers Oriented Project Management',
+ 'Blogging for busy programmers']
+.each do |name|
+  Product.create(name: name)
+end
