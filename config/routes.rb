@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     collection do
       post :expire
     end
+    member do
+      post :add_item
+      post :remove_item
+    end
   end
 end
