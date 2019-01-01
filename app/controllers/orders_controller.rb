@@ -39,4 +39,13 @@ class OrdersController < ApplicationController
     command_bus.(cmd) 
     redirect_to order_path(Orders::Order.find_by_uid(cmd.order_id)), notice: 'Order was successfully submitted.'
   end
+
+  def expire
+    Orders::Order.where(state: 'Draft').find_each do |order|
+      command_bus.(
+        Ordering::SetOrderAsExpired.new(order_id: order.uid)
+      )
+    end
+    redirect_to root_path
+  end
 end

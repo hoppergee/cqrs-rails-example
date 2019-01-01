@@ -7,6 +7,7 @@ module Ordering
     AlreadySubmitted = Class.new(StandardError)
     OrderHasExpired = Class.new(StandardError)
     MissingCustomer = Class.new(StandardError)
+    AlreadyPaid = Class.new(StandardError)
 
     def initialize(id)
       @id = id
@@ -41,6 +42,13 @@ module Ordering
       })
     end
 
+    def expire
+      raise AlreadyPaid if @state == :paid
+      apply OrderExpired.new(data: {
+        order_id: @id
+      })
+    end
+
     on ItemAddedToBasket do |event|
       product_id = event.data[:product_id]
       order_line = find_order_line(product_id)
@@ -63,6 +71,10 @@ module Ordering
       @customer_id = event.data[:customer_id]
       @number = event.data[:order_number]
       @state = :submitted
+    end
+
+    on OrderExpired do |event|
+      @state = :expired
     end
 
     private
