@@ -33,6 +33,14 @@ module Ordering
       })
     end
 
+    def remove_item(product_id)
+      raise AlreadySubmitted unless @state == :draft
+      apply ItemRemovedFromBasket.new(data:{
+        order_id: @id,
+        product_id: product_id
+      })
+    end
+
     on ItemAddedToBasket do |event|
       product_id = event.data[:product_id]
       order_line = find_order_line(product_id)
@@ -41,6 +49,14 @@ module Ordering
         @order_lines << order_line
       end
       order_line.increase_quantity
+    end
+
+    on ItemRemovedFromBasket do |event|
+      product_id = event.data[:product_id]
+      order_line = find_order_line(product_id)
+      return unless order_line
+      order_line.decrease_quantity
+      remove_order_line(order_line) if order_line.empty?
     end
 
     on OrderSubmitted do |event|
@@ -57,6 +73,10 @@ module Ordering
 
     def create_order_line(product_id)
       OrderLine.new(product_id)
+    end
+
+    def remove_order_line(order_line)
+      @order_lines.delete(order_line)
     end
   end
 end

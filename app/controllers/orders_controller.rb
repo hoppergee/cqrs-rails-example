@@ -24,6 +24,16 @@ class OrdersController < ApplicationController
     head :ok
   end
 
+  def remove_item
+    command_bus.(
+      Ordering::RemoveItemFromBasket.new(
+        order_id: params[:id],
+        product_id: params[:product_id]
+      )
+    )
+    head :ok
+  end
+
   def create
     cmd = Ordering::SubmitOrder.new(order_id: params[:order_id], customer_id: params[:customer_id])
     command_bus.(cmd) 

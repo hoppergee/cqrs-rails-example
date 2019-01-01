@@ -12,6 +12,10 @@ module Ordering
       @quantity += 1
     end
 
+    def decrease_quantity
+      @quantity -= 1
+    end
+
     private
 
     attr_accessor :quantity
