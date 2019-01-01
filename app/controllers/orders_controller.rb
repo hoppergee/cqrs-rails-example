@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
     @orders = Orders::Order.all
   end
 
+  def show
+    @order = Orders::Order.find(params[:id])
+    @order_lines = Orders::OrderLine.where(order_uid: @order.uid)
+  end
+
   def new
     @order_id = SecureRandom.uuid
     @products = Product.all
