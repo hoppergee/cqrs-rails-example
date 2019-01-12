@@ -34,6 +34,14 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
-coverage
-/elm-stuff
 
+# Ignore Byebug command history file.
+.byebug_history
+/coverage
+.env
+.env.*
+.docker_env/*
+config/super_harvest.yml
+.ruby-version
+.DS_Store
+elm-stuff
