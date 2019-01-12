@@ -36,6 +36,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'mutant-minitest'
   gem 'database_cleaner'
+  gem 'rails_event_store-rspec'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
