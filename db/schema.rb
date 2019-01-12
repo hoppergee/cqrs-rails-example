@@ -61,30 +61,30 @@ ActiveRecord::Schema.define(version: 2019_01_12_085930) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ui_developer_list_read_models", force: :cascade do |t|
+  create_table "ui_developer_list_read_models", primary_key: "uuid", id: :uuid, default: nil, force: :cascade do |t|
     t.string "fullname"
     t.string "email"
     t.index ["email"], name: "index_ui_developer_list_read_models_on_email"
   end
 
-  create_table "ui_notification_list_read_models", force: :cascade do |t|
+  create_table "ui_notification_list_read_models", primary_key: "uuid", id: :uuid, default: nil, force: :cascade do |t|
     t.text "message"
   end
 
-  create_table "ui_project_aproximate_end_read_models", force: :cascade do |t|
+  create_table "ui_project_aproximate_end_read_models", primary_key: "uuid", id: :uuid, default: nil, force: :cascade do |t|
     t.integer "estimation"
     t.jsonb "working_hours", default: {}
     t.datetime "approximate_end"
   end
 
-  create_table "ui_project_details_read_models", force: :cascade do |t|
+  create_table "ui_project_details_read_models", primary_key: "uuid", id: :uuid, default: nil, force: :cascade do |t|
     t.string "name"
     t.integer "estimation_in_hours"
     t.jsonb "developers", default: []
     t.datetime "deadline"
   end
 
-  create_table "ui_project_list_read_models", force: :cascade do |t|
+  create_table "ui_project_list_read_models", primary_key: "uuid", id: :uuid, default: nil, force: :cascade do |t|
     t.string "name"
   end
 
