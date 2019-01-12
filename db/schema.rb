@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_085417) do
+ActiveRecord::Schema.define(version: 2019_01_12_085707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 2019_01_12_085417) do
     t.string "fullname"
     t.string "email"
     t.index ["email"], name: "index_ui_developer_list_read_models_on_email"
+  end
+
+  create_table "ui_notification_list_read_models", force: :cascade do |t|
+    t.text "message"
   end
 
   create_table "ui_project_aproximate_end_read_models", force: :cascade do |t|
