@@ -1,0 +1,4 @@
+module ProjectManagement
+end
+
+require_dependency 'project_management/domain_events/developer_registered'

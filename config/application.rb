@@ -18,5 +18,8 @@ module CqrsEsSampleWithRes
     config.paths.add "lib",          eager_load: true
     config.paths.add 'ordering/lib', eager_load: true
     config.paths.add 'payments/lib', eager_load: true
+
+    config.paths.add 'ui/lib', eager_load: true
+    config.paths.add 'project_management/lib', eager_load: true
   end
 end
