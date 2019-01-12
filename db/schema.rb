@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_084958) do
+ActiveRecord::Schema.define(version: 2019_01_12_085417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 2019_01_12_084958) do
     t.integer "estimation"
     t.jsonb "working_hours", default: {}
     t.datetime "approximate_end"
+  end
+
+  create_table "ui_project_details_read_models", force: :cascade do |t|
+    t.string "name"
+    t.integer "estimation_in_hours"
+    t.jsonb "developers", default: []
+    t.datetime "deadline"
   end
 
 end
