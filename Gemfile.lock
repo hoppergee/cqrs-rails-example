@@ -81,6 +81,7 @@ GEM
     chromedriver-helper (2.1.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    classy_hash (0.2.1)
     concord (0.1.5)
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
@@ -342,6 +343,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  classy_hash (~> 0.2.1)
   database_cleaner
   dry-struct
   honeybadger (~> 4.0)
