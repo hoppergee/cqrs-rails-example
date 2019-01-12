@@ -15,6 +15,8 @@ gem 'honeybadger', '~> 4.0'
 gem 'rails_event_store', '~> 0.35.0'
 gem 'dry-struct'
 
+gem 'pg'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -24,11 +26,6 @@ end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :test do
